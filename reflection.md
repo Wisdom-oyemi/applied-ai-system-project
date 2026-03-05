@@ -2,6 +2,8 @@
 
 ## 1. System Design
 
+Basic responsibilities: add pets, schedule walk sessions, view daily tasks, track routines, etc.
+
 **a. Initial design**
 
 - Briefly describe your initial UML design.
