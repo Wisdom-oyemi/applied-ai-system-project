@@ -7,12 +7,20 @@ Basic responsibilities: add pets, schedule walk sessions, view daily tasks, trac
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+Owner is the most important class, because every other class derives from its functionality. The Owner can directly affect the Pet class (via manual manipulation) or through the Scheduler class, which performs actions on the Pet and Task classes automatically.
+
 - What classes did you include, and what responsibilities did you assign to each?
+Classes: Owner, Pet, Scheduler, Task
+
+Responsibilities: get assigned tasks/special needs (Pet); assign objective with time duration/priority (Task); add pet/task/schedule (Owner); generate and optimize schedules (Scheduler)
 
 **b. Design changes**
 
 - Did your design change during implementation?
+The design changes were minimal, but a few small things were added.
+
 - If yes, describe at least one change and why you made it.
+One change that was made was a better link between Pet and Task via implementing a tasks list (for the get_assigned_tasks function to have data to work with).
 
 ---
 

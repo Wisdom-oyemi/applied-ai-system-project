@@ -8,6 +8,7 @@ class Pet:
     breed: str
     age: float
     health_conditions: list[str] = field(default_factory=list)
+    tasks: list["Task"] = field(default_factory=list)  # back-reference to assigned tasks
 
     def get_assigned_tasks(self) -> list:
         pass
@@ -43,22 +44,24 @@ class Owner:
         self.preferences: dict = preferences or {}
         self.pets: list[Pet] = []
         self.tasks: list[Task] = []
+        self.scheduler: "Scheduler" = None  # set after Scheduler is created
 
     def add_pet(self, pet: Pet) -> None:
         pass
 
     def add_task(self, task: Task) -> None:
+        # should also call task.pet.tasks.append(task) to keep Pet in sync
         pass
 
     def get_schedule(self) -> list:
+        # delegates to self.scheduler.generate_schedule()
         pass
 
 
 class Scheduler:
     def __init__(self, owner: Owner):
         self.owner = owner
-        self.pets: list[Pet] = []
-        self.tasks: list[Task] = []
+        # pets and tasks are read from owner directly — no duplicate state
         self.daily_schedule: list = []
 
     def generate_schedule(self) -> list:
